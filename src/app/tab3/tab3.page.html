@@ -1,17 +1,77 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Add Project
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="loader">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="flex items-center min-h-screen bg-gray-900 container-fluid">
+    <div class="container mx-auto">
+      <div class="max-w-md mx-auto my-10 bg-gray-800 p-1 rounded-md shadow-sm">
+        <div class="text-center">
+          <!-- <h1 class="my-3 text-3xl font-semibold text-gray-100">
+            Add Project
+          </h1> -->
+          <p class="text-gray-400 dark:text-gray-400 mt-2">
+            Fill up the form below to add project in your Portfolio.
+          </p>
+        </div>
+        <div class="m-7">
+          <form id="form" [formGroup]="reactiveForm" (ngSubmit)="handleSubmit()">
+  
+            <div class="mb-6">
+              <label for="title" class="block mb-2 text-sm text-gray-400">Title</label><br />
+              <input type="text" formControlName="title" id="title" placeholder="Project Title" required class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" />
+            </div>
+            <div class="mb-6">
+              <label for="description" class="block mb-2 text-sm text-gray-400 mt-2">Description</label><br />
+              <textarea rows="5" formControlName="description" id="description" placeholder="Your Description" class="w-full px-3 py-2 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" required></textarea>
+            </div>
+            <div class="mb-6">
+              <label for="deployed" class="block mb-2 text-sm text-gray-400 mt-2">Deployed</label><br />
+              <input type="text" formControlName="deployed" id="deployed" placeholder="www.google.com" class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" />
+            </div>
+            <div class="mb-6">
+              <label for="github" class="block mb-2 text-sm text-gray-400 mt-2">Github Link</label><br />
+              <input type="text" formControlName="github" id="github" placeholder="https://github.com/" class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" />
+            </div>
+            <div class="mb-6">
+              <label for="image" class="block mb-2 text-sm text-gray-400 mt-2">Image</label><br />
+              <input type="file" #filePicker (change)="onImagePicked($event)" placeholder="Select Image of your project" required class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" />
+            </div>
+            <div class="mb-6">
+              <label for="technologies" class="block mb-2 text-sm text-gray-400 mt-2">Technologies</label><br />
+              <input type="text" formControlName="technologies" id="technologies" placeholder="Write technologies used in your project" required class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" />
+            </div>
+            <div class="mb-6">
+              <label for="bgColor" class="block mb-2 text-sm text-gray-400 mt-2">Background Color Code</label><br />
+              <input type="text" formControlName="bgColor" id="bgColor" placeholder="#ffffff" required class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none container-fluid" />
+            </div>
+            <div class="mb-6">
+              <!-- <img *ngIf="loader" style="width : 24px" src="../../assets/Rolling-1s-200px.gif" />
+              <button type="submit"
+              [disabled]="loader"
+              class=" mt-2 w-full bg-indigo-600 inline-block text-white no-underline hover:text-indigo-100 py-4 px-4 rounded-sm focus:outline-none">
+              Submit
+              </button> -->
+              <ion-button type="submit" expand="block" [disabled]="loader"
+                class=" mt-2 w-full bg-indigo-600 inline-block text-white no-underline hover:text-indigo-100 py-4 px-4 rounded-sm focus:outline-none">
+                {{ loader ? 'Submitting...' : 'Submit' }}
+                <ion-spinner *ngIf="loader" name="crescent"></ion-spinner>
+              </ion-button>
+            </div>
+            <p class="text-base text-center text-gray-400" id="result"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

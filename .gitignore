@@ -6,6 +6,8 @@ node_modules
 *.env
 .vscode
 client/dist
+.angular
+.www
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
