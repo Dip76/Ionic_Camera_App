@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-tab1',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
   constructor() {}
+
+  onViewClick() {
+    const linkToOpen = 'https://main--magnificent-eclair-cb873d.netlify.app/';
+    Browser.open({ url: linkToOpen });
+  }
 
 }
